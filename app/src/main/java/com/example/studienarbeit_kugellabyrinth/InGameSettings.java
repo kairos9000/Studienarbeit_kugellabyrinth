@@ -209,6 +209,7 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
             intent.putExtra("time", time);
             finish();
             startActivity(intent);
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
 
         }
 

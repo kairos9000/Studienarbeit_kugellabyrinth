@@ -210,6 +210,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             intent.putExtra("time", seconds);
             finish();
             startActivity(intent);
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
 
         }
 
