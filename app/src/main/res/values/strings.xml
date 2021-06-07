@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Kugellabyrinth</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_scoreboard">Bestenliste</string>
+
+    <string name="start">Start</string>
+    <string name="name">Name</string>
+    <string name="sensoren">Sensoren</string>
+    <string name="handy">Handy</string>
+    <string name="raspi">Raspberry Pi</string>
+    <string name="brokerIP">Broker-IP</string>
+    <string name="topic">Topic</string>
+    <string name="ton">Ton</string>
+    <string name="speichern">Speichern</string>
+    <string name="stopwatch">00:00</string>
+    <string name="datensatzTemplate"> </string>
+    <string name="zeit">Zeit</string>
+    <string name="nochmal">Nochmal</string>
+
+    <string-array name="sounds_array">
+        <item>Win-Sound</item>
+        <item>Stumm</item>
+
+    </string-array>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
