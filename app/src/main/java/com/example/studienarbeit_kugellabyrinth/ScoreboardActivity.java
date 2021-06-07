@@ -167,6 +167,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             name = "Spieler" + String.valueOf(currDatensatz);
         }
         dbZugriff.changeCurrName(name, currDatensatz);
+        //comment
         //anzahlDatensaetze = dbZugriff.getDBLaenge();
         anzeigeAktualisieren();
     }
