@@ -1,4 +1,4 @@
-#Mon Jun 07 09:42:07 CEST 2021
+#Mon Jun 07 10:47:40 CEST 2021
 base.0=C\:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

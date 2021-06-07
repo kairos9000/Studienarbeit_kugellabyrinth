@@ -119,6 +119,17 @@ public class DatenbankZugriff extends SQLiteOpenHelper {
         }
     }
 
+    public void changeCurrName(String name, long currID){
+        try{
+            ContentValues cv = new ContentValues();
+            cv.put("name", name);
+            db.update(tabelle, cv, "_id = " + currID, null);
+        }
+        catch(Exception ex) {
+            Log.d("carpelibrum", ex.getMessage());
+        }
+    }
+
 
     /**
      * Liefert Cursor zum Zugriff auf alle Eintr?ge, alphabetisch geordnet nach Spalte "Name"

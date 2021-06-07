@@ -36,7 +36,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     private boolean gameEnded;
     SharedPreferences mPreferences;
     int rank;
-    int anzahlDatensaetze;
+    //int anzahlDatensaetze;
     char[][] maze;
     int[] ballPos;
     Button nochmal;
@@ -89,7 +89,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         dbZugriff     = new DatenbankZugriff(this, "SPIELER.dat", sql);
 
 
-        anzahlDatensaetze = dbZugriff.getDBLaenge();
+        //anzahlDatensaetze = dbZugriff.getDBLaenge();
 
         cursor       = dbZugriff.erzeugeListViewCursor();
 
@@ -142,6 +142,8 @@ public class ScoreboardActivity extends AppCompatActivity {
         nochmal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(ScoreboardActivity.this, StartActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -158,12 +160,14 @@ public class ScoreboardActivity extends AppCompatActivity {
                         "%02d:%02d",
                         minutes, secs);
 
-        if(name.length() == 0){
-            name = "Anonym";
-        }
+
         DatenbankTemplate datensatz = new DatenbankTemplate(name, time);
         currDatensatz = dbZugriff.datensatzEinfuegen(datensatz);
-        anzahlDatensaetze = dbZugriff.getDBLaenge();
+        if(name.length() == 0){
+            name = "Spieler" + String.valueOf(currDatensatz);
+        }
+        dbZugriff.changeCurrName(name, currDatensatz);
+        //anzahlDatensaetze = dbZugriff.getDBLaenge();
         anzeigeAktualisieren();
     }
 
@@ -214,6 +218,8 @@ public class ScoreboardActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         if(gameEnded){
+            Intent intent = new Intent(ScoreboardActivity.this, StartActivity.class);
+            startActivity(intent);
             finish();
         } else{
             Intent intent = new Intent(ScoreboardActivity.this, MainActivity.class);

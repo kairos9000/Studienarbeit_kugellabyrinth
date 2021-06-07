@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -28,8 +29,8 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
     RadioButton handy;
     RadioButton raspi;
     String sensorType;
-    EditText brokerIP;
-    EditText topic;
+    AutoCompleteTextView brokerIP;
+    AutoCompleteTextView topic;
     EditText name;
     Spinner soundSpinner;
     long soundID;
@@ -71,6 +72,18 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         soundSpinner.setOnItemSelectedListener(this);
         soundID = soundArr[0];
 
+        ArrayAdapter<String> brokerAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.select_dialog_item, new String[] {mPreferences.getString("brokerIP", "")});
+
+        brokerIP.setThreshold(1);
+        brokerIP.setAdapter(brokerAdapter);
+
+        ArrayAdapter<String> topicAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.select_dialog_item, new String[] {mPreferences.getString("topic", "")});
+
+        topic.setThreshold(1);
+        topic.setAdapter(topicAdapter);
+
 
 
         start.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +97,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
                 editor.putLong("soundID", soundID);
                 editor.apply();
                 startActivity(gameIntent);
+                finish();
             }
         });
 

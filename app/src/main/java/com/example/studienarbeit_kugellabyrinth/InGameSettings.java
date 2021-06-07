@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -27,8 +28,8 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
     Button speichern;
     RadioButton handy;
     RadioButton raspi;
-    EditText newBrokerIP;
-    EditText newTopic;
+    AutoCompleteTextView newBrokerIP;
+    AutoCompleteTextView newTopic;
     EditText newName;
     int[] ballPos;
     char[][] maze;
@@ -85,6 +86,18 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
         oldTopic = mPreferences.getString("topic", "");
 
         newName.setText(oldName);
+
+        ArrayAdapter<String> brokerAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.select_dialog_item, new String[] {mPreferences.getString("brokerIP", "")});
+
+        newBrokerIP.setThreshold(1);
+        newBrokerIP.setAdapter(brokerAdapter);
+
+        ArrayAdapter<String> topicAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.select_dialog_item, new String[] {mPreferences.getString("topic", "")});
+
+        newTopic.setThreshold(1);
+        newTopic.setAdapter(topicAdapter);
 
 
         if(sensorType.equals("handy")){
