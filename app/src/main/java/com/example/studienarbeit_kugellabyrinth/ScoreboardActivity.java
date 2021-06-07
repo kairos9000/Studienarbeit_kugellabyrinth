@@ -47,8 +47,6 @@ public class ScoreboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -167,7 +165,6 @@ public class ScoreboardActivity extends AppCompatActivity {
             name = "Spieler" + String.valueOf(currDatensatz);
         }
         dbZugriff.changeCurrName(name, currDatensatz);
-        //comment
         //anzahlDatensaetze = dbZugriff.getDBLaenge();
         anzeigeAktualisieren();
     }
@@ -233,7 +230,6 @@ public class ScoreboardActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
 
     }
 

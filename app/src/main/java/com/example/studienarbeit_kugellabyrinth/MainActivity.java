@@ -25,6 +25,13 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -52,7 +59,13 @@ public class MainActivity extends AppCompatActivity {
     Stopwatch stopwatch;
     TextView stopwatchView;
     SharedPreferences mPreferences;
-    SharedPreferences.Editor editor;
+    private static String sub_topic;      // ggf. Anpassen
+    private static final String pub_topic = "sensehat/message"; // ggf. Anpassen
+    private final int qos = 0; // MQTT quality of service
+    private final MemoryPersistence persistence = new MemoryPersistence();
+    private MqttClient client;
+    boolean connected = false;
+
 
 
     @Override
@@ -88,10 +101,6 @@ public class MainActivity extends AppCompatActivity {
             time = intent.getIntExtra("time", 0);
         }
 
-        //ballPos = intent.getIntArrayExtra("ballPos");
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
@@ -119,23 +128,20 @@ public class MainActivity extends AppCompatActivity {
                     else {
                         maze[i][j] = 'e';
                     }
-
-
                 }
             }
         }
 
-
-
-
-        mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-        mSensorListener = new TiltEventListener() {
-            @Override
-            public void onTilt(float x, float y) {
-                MainActivity.this.moveBall(x, y);
-            }
-        };
-        mSensorListener.setGravitationalConstant(SensorManager.GRAVITY_EARTH);
+        if(mPreferences.getString("sensorType", "").equals("handy")){
+            mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+            mSensorListener = new TiltEventListener() {
+                @Override
+                public void onTilt(float x, float y) {
+                    MainActivity.this.moveBall(x, y);
+                }
+            };
+            mSensorListener.setGravitationalConstant(SensorManager.GRAVITY_EARTH);
+        }
 
 
         mazeZeichnen.getMaze(maze);
@@ -165,12 +171,14 @@ public class MainActivity extends AppCompatActivity {
             Intent scoreboardIntent = new Intent(MainActivity.this, ScoreboardActivity.class);
             scoreboardIntent.putExtra("gameEnded", true);
             stopwatch.stop();
+            if(connected){
+                publish(pub_topic, "schwarz rot gelb");
+            }
             scoreboardIntent.putExtra("time", stopwatch.getSeconds());
             startActivity(scoreboardIntent);
             finish();
 
         }
-
         stopwatch = new Stopwatch();
         stopwatchView = findViewById(R.id.stopwatch);
 
@@ -178,8 +186,6 @@ public class MainActivity extends AppCompatActivity {
 
         stopwatch.start();
         stopwatch.runTimer(stopwatchView);
-
-
     }
 
     private void moveBall(float x, float y) {
@@ -195,6 +201,9 @@ public class MainActivity extends AppCompatActivity {
                 scoreboardIntent.putExtra("gameEnded", true);
                 stopwatch.stop();
                 scoreboardIntent.putExtra("time", stopwatch.getSeconds());
+                if(connected){
+                    publish(pub_topic, "schwarz rot gelb");
+                }
                 startActivity(scoreboardIntent);
                 finish();
             }
@@ -204,15 +213,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        mSensorManager.unregisterListener(mSensorListener);
+        if(mPreferences.getString("sensorType", "").equals("raspi")){
+            disconnect();
+            connected = false;
+        }else {
+            mSensorManager.unregisterListener(mSensorListener);
+        }
+
         super.onPause();
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-                SensorManager.SENSOR_DELAY_NORMAL);
+        if(mPreferences.getString("sensorType", "").equals("raspi")){
+            connected = connect(mPreferences.getString("brokerIP", ""));
+            subscribe(mPreferences.getString("topic", ""));
+        } else{
+            mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                    SensorManager.SENSOR_DELAY_NORMAL);
+        }
+
     }
 
     @Override
@@ -251,12 +272,7 @@ public class MainActivity extends AppCompatActivity {
             inGameScoreboardIntent.putExtra("gameEnded", false);
             startActivity(inGameScoreboardIntent);
             finish();
-        }/* else if (id == android.R.id.home){
-            Intent intent = new Intent(MainActivity.this, StartActivity.class);
-            StartActivity.startActivity.finish();
-            finish();
-            startActivity(intent);
-        }*/
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -266,6 +282,79 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, StartActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    /**
+     * Connect to broker and
+     * @param broker Broker to connect to
+     */
+    public boolean connect (String broker) {
+        try {
+            broker = "tcp://" + broker + ":1883";
+            String clientId = MqttClient.generateClientId();
+            client = new MqttClient(broker, clientId, persistence);
+            MqttConnectOptions connOpts = new MqttConnectOptions();
+            connOpts.setCleanSession(true);
+            client.connect(connOpts);
+            return true;
+        } catch (MqttException me) {
+            return false;
+        }
+
+    }
+
+    /**
+     * Subscribes to a given topic
+     * @param topic Topic to subscribe to
+     */
+    public boolean subscribe(String topic) {
+        try {
+            client.subscribe(topic, qos, new IMqttMessageListener() {
+                @Override
+                public void messageArrived(String topic, MqttMessage msg) throws Exception {
+                    String message = new String(msg.getPayload());
+                    String[] messageSplitted = message.split(", ", 3);
+                    moveBall(Float.parseFloat(messageSplitted[0]), Float.parseFloat(messageSplitted[1]));
+                }
+            });
+            sub_topic = topic;
+            return true;
+        } catch (MqttException e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * Publishes a message via MQTT (with fixed topic)
+     * @param topic topic to publish with
+     * @param msg message to publish with publish topic
+     */
+    public void publish(String topic, String msg) {
+        MqttMessage message = new MqttMessage(msg.getBytes());
+        try {
+            client.publish(topic, message);
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Unsubscribe from default topic (please unsubscribe from further
+     * topics prior to calling this function)
+     */
+    public void disconnect() {
+        try {
+            client.unsubscribe(sub_topic);
+        } catch (MqttException e) {
+            e.printStackTrace();
+            Log.e(TAG, e.getMessage());
+        }
+        try {
+            client.disconnect();
+        } catch (MqttException me) {
+            Log.e(TAG, me.getMessage());
+        }
     }
 
 }

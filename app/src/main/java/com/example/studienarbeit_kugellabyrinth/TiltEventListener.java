@@ -21,10 +21,6 @@ public abstract class TiltEventListener implements SensorEventListener {
     public void onSensorChanged(SensorEvent se){
         float x = se.values[0];
         float y = se.values[1];
-        //float z = se.values[2];
-
-        //Log.d(TAG, String.valueOf(x)+ String.valueOf(y));
-
 
         onTilt(x, y);
 

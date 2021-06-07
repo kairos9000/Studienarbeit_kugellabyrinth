@@ -27,8 +27,6 @@ public class KugelZeichnen extends AppCompatImageView {
 
     float step;
     float radius;
-    float xPos = 0;
-    float yPos = 0;
     float xInit = 0;
     float yInit = 0;
     float xTilt = 0;
@@ -36,13 +34,11 @@ public class KugelZeichnen extends AppCompatImageView {
     int[] kugelPos = new int[2];
     boolean initializeVariables = true;
     private char[][] maze = new char[50][50];
-    Context context;
 
 
 
     public KugelZeichnen(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.context = context;
     }
 
     public boolean updateDirections(float x, float y){
@@ -97,21 +93,17 @@ public class KugelZeichnen extends AppCompatImageView {
             initializeVariables = false;
         }
 
-            if(-4 > xTilt && maze[kugelPos[0]][kugelPos[1]+1] != 'w' &&
+            if(-2 > xTilt && maze[kugelPos[0]][kugelPos[1]+1] != 'w' &&
                     maze[kugelPos[0]][kugelPos[1]+1] != '\u0000'){
-                xPos += step;
                 kugelPos[1] += 1;
-            } else if(4 < xTilt  && kugelPos[1] != 0 &&
+            } else if(2 < xTilt  && kugelPos[1] != 0 &&
                     maze[kugelPos[0]][kugelPos[1]-1] != 'w'){
-                xPos -= step;
                 kugelPos[1] -= 1;
-            } else if(-2 > yTilt && kugelPos[0] != 0 &&
+            } else if(-1 > yTilt && kugelPos[0] != 0 &&
                     maze[kugelPos[0]-1][kugelPos[1]] != 'w'){
-                yPos -= step;
                 kugelPos[0] -= 1;
-            } else if(4 < yTilt && maze[kugelPos[0]+1][kugelPos[1]] != 'w' &&
+            } else if(2 < yTilt && maze[kugelPos[0]+1][kugelPos[1]] != 'w' &&
                     maze[kugelPos[0]+1][kugelPos[1]] != '\u0000'){
-                yPos += step;
                 kugelPos[0] += 1;
             }
 
@@ -121,9 +113,6 @@ public class KugelZeichnen extends AppCompatImageView {
             e.printStackTrace();
         }
 
-
         canvas.drawCircle(xInit + (step*kugelPos[1]) + radius, yInit + (step * kugelPos[0]) + radius, radius, black);
-
-
     }
 }

@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -89,15 +93,41 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gameIntent = new Intent(StartActivity.this, MainActivity.class);
-                editor.putString("name", String.valueOf(name.getText()));
-                editor.putString("sensorType", sensorType);
-                editor.putString("brokerIP", String.valueOf(brokerIP.getText()));
-                editor.putString("topic", String.valueOf(topic.getText()));
-                editor.putLong("soundID", soundID);
-                editor.apply();
-                startActivity(gameIntent);
-                finish();
+                if(sensorType == "handy"){
+                    Intent gameIntent = new Intent(StartActivity.this, MainActivity.class);
+                    editor.putString("name", String.valueOf(name.getText()));
+                    editor.putString("sensorType", sensorType);
+                    editor.putString("brokerIP", String.valueOf(brokerIP.getText()));
+                    editor.putString("topic", String.valueOf(topic.getText()));
+                    editor.putLong("soundID", soundID);
+                    editor.apply();
+                    startActivity(gameIntent);
+                    finish();
+                } else if(sensorType == "raspi"){
+                    MQTTHandler mqttHandler = new MQTTHandler();
+                    boolean connected = mqttHandler.connect(String.valueOf(brokerIP.getText()));
+                    if(!connected){
+                        Toast.makeText(StartActivity.this, "Verbindung zum Broker konnte nicht hergestellt werden",
+                                Toast.LENGTH_SHORT).show();
+                        brokerIP.setTextColor(Color.RED);
+                        return;
+                    }
+
+                    if(connected){
+                        mqttHandler.disconnect();
+                        Intent gameIntent = new Intent(StartActivity.this, MainActivity.class);
+                        editor.putString("name", String.valueOf(name.getText()));
+                        editor.putString("sensorType", sensorType);
+                        editor.putString("brokerIP", String.valueOf(brokerIP.getText()));
+                        editor.putString("topic", String.valueOf(topic.getText()));
+                        editor.putLong("soundID", soundID);
+                        editor.apply();
+                        startActivity(gameIntent);
+                        finish();
+                    }
+                }
+
+
             }
         });
 
@@ -118,6 +148,23 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
                 topic.setVisibility(View.VISIBLE);
             }
         });
+
+        brokerIP.addTextChangedListener(new TextWatcher() {
+
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0)
+                    brokerIP.setTextColor(Color.WHITE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
     }
 
     @Override
@@ -129,8 +176,5 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-
-
 
 }

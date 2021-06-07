@@ -35,34 +35,7 @@ public class DatenbankZugriff extends SQLiteOpenHelper {
 
         this.tabelle = dbName.replace(".dat", "").toUpperCase();
         db.execSQL(tabellenSQL);
-        /*try{
-            Cursor cursor = db.query(tabelle, new String[]{"_id", "Name", "Zeit"}, null, null, null, null, "Zeit");
-        } catch (RuntimeException re){
-            Log.d(TAG, "Exception");
-            onCreate(db);
-        }*/
     }
-
-
-    /** Aus dem Tabellen-Anlage-SQL den Namen der Tabelle  extrahieren
-     *
-     */
-	/*private void bestimmeTabelle() {
-		String sql                = tabellenSQL.toUpperCase();
-		StringTokenizer tokenizer = new StringTokenizer(sql);
-
-		//  den Tabellennamen suchen
-		while(tokenizer.hasMoreTokens()) {
-			String token = tokenizer.nextToken();
-
-			if (token.equals("TABLE")) {
-
-				tabelle = tokenizer.nextToken();
-				break;
-			}
-		}
-
-	}*/
 
     @Override
     /**
@@ -98,9 +71,6 @@ public class DatenbankZugriff extends SQLiteOpenHelper {
 
         super.close();
     }
-
-
-
 
 
     /**

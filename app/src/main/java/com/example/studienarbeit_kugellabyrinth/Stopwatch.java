@@ -37,19 +37,9 @@ public class Stopwatch extends Activity {
     public void runTimer(TextView timeView)
     {
 
-        // Get the text view.
-        //final TextView timeView = (TextView)findViewById(R.id.stopwatch);
-
-        // Creates a new Handler
         final Handler handler
                 = new Handler();
 
-        // Call the post() method,
-        // passing in a new Runnable.
-        // The post() method processes
-        // code without a delay,
-        // so the code in the Runnable
-        // will run almost immediately.
         handler.post(new Runnable() {
             @Override
 

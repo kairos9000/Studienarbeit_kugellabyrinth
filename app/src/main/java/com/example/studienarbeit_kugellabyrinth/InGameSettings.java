@@ -2,8 +2,11 @@ package com.example.studienarbeit_kugellabyrinth;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -142,23 +146,53 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
         speichern.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(sensorType == "handy") {
+                    Intent gameIntent = new Intent(InGameSettings.this, MainActivity.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("maze", maze);
+                    gameIntent.putExtras(mBundle);
+                    gameIntent.putExtra("ballPos", ballPos);
+                    gameIntent.putExtra("time", time);
+                    editor.clear();
+                    editor.apply();
+                    editor.putString("name", String.valueOf(newName.getText()));
+                    editor.putString("sensorType", sensorType);
+                    editor.putString("brokerIP", String.valueOf(newBrokerIP.getText()));
+                    editor.putString("topic", String.valueOf(newTopic.getText()));
+                    editor.putLong("soundID", newSoundID);
+                    editor.apply();
+                    startActivity(gameIntent);
+                    finish();
+                } else if(sensorType == "raspi") {
+                    MQTTHandler mqttHandler = new MQTTHandler();
+                    boolean connected = mqttHandler.connect(String.valueOf(newBrokerIP.getText()));
+                    if (!connected) {
+                        Toast.makeText(InGameSettings.this, "Verbindung zum Broker konnte nicht hergestellt werden",
+                                Toast.LENGTH_SHORT).show();
+                        newBrokerIP.setTextColor(Color.RED);
+                        return;
+                    }
 
-                Intent gameIntent = new Intent(InGameSettings.this, MainActivity.class);
-                Bundle mBundle = new Bundle();
-                mBundle.putSerializable("maze",  maze);
-                gameIntent.putExtras(mBundle);
-                gameIntent.putExtra("ballPos", ballPos);
-                gameIntent.putExtra("time", time);
-                editor.clear();
-                editor.apply();
-                editor.putString("name", String.valueOf(newName.getText()));
-                editor.putString("sensorType", sensorType);
-                editor.putString("brokerIP", String.valueOf(newBrokerIP.getText()));
-                editor.putString("topic", String.valueOf(newTopic.getText()));
-                editor.putLong("soundID", newSoundID);
-                editor.apply();
-                startActivity(gameIntent);
-                finish();
+                    if (connected) {
+                        mqttHandler.disconnect();
+                        Intent gameIntent = new Intent(InGameSettings.this, MainActivity.class);
+                        Bundle mBundle = new Bundle();
+                        mBundle.putSerializable("maze", maze);
+                        gameIntent.putExtras(mBundle);
+                        gameIntent.putExtra("ballPos", ballPos);
+                        gameIntent.putExtra("time", time);
+                        editor.clear();
+                        editor.apply();
+                        editor.putString("name", String.valueOf(newName.getText()));
+                        editor.putString("sensorType", sensorType);
+                        editor.putString("brokerIP", String.valueOf(newBrokerIP.getText()));
+                        editor.putString("topic", String.valueOf(newTopic.getText()));
+                        editor.putLong("soundID", newSoundID);
+                        editor.apply();
+                        startActivity(gameIntent);
+                        finish();
+                    }
+                }
             }
         });
 
@@ -178,6 +212,23 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
                 newBrokerIP.setVisibility(View.VISIBLE);
                 newTopic.setVisibility(View.VISIBLE);
             }
+        });
+
+        newBrokerIP.addTextChangedListener(new TextWatcher() {
+
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0)
+                    newBrokerIP.setTextColor(Color.WHITE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
         });
     }
 
