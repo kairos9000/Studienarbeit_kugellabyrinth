@@ -1,6 +1,5 @@
 package com.example.studienarbeit_kugellabyrinth;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,20 +8,13 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.preference.PreferenceManager;
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
 
 import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
@@ -31,14 +23,6 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -200,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         if(mPreferences.getString("sensorType", "").equals("raspi")){
+
             connected = connect(mPreferences.getString("brokerIP", ""));
             subscribe(mPreferences.getString("topic", ""));
         } else{
@@ -225,13 +210,14 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent inGameSettingsIntent = new Intent(MainActivity.this, InGameSettings.class);
+            Intent inGameSettingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("maze",  maze);
             inGameSettingsIntent.putExtras(mBundle);
             inGameSettingsIntent.putExtra("ballPos", ballPos);
             stopwatch.stop();
             inGameSettingsIntent.putExtra("time", stopwatch.getSeconds());
+            inGameSettingsIntent.putExtra("inGame", true);
             startActivity(inGameSettingsIntent);
             finish();
         } else if (id == R.id.action_scoreboard) {
@@ -252,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent intent = new Intent(MainActivity.this, StartActivity.class);
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
         finish();
     }

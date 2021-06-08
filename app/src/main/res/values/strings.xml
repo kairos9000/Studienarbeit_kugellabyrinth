@@ -18,7 +18,10 @@
     <string name="nochmal">Nochmal</string>
 
     <string-array name="sounds_array">
-        <item>Win-Sound</item>
+        <item>Trompete</item>
+        <item>Applaus</item>
+        <item>Feuerwerk</item>
+        <item>Tada</item>
         <item>Stumm</item>
 
     </string-array>

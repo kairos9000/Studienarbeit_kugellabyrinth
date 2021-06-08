@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -134,7 +133,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         nochmal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ScoreboardActivity.this, StartActivity.class);
+                Intent intent = new Intent(ScoreboardActivity.this, SettingsActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -210,7 +209,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         if(gameEnded){
-            Intent intent = new Intent(ScoreboardActivity.this, StartActivity.class);
+            Intent intent = new Intent(ScoreboardActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
         } else{

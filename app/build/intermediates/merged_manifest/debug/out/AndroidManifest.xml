@@ -24,7 +24,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.Studienarbeit_kugellabyrinth" >
         <activity
-            android:name="com.example.studienarbeit_kugellabyrinth.StartActivity"
+            android:name="com.example.studienarbeit_kugellabyrinth.SettingsActivity"
             android:label="@string/app_name"
             android:noHistory="false"
             android:screenOrientation="portrait"
@@ -37,22 +37,14 @@
         </activity>
         <activity
             android:name="com.example.studienarbeit_kugellabyrinth.MainActivity"
-            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.StartActivity"
+            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.SettingsActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StartActivity" />
+                android:value=".SettingsActivity" />
         </activity>
         <activity
             android:name="com.example.studienarbeit_kugellabyrinth.ScoreboardActivity"
-            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.MainActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.studienarbeit_kugellabyrinth.InGameSettings"
             android:parentActivityName="com.example.studienarbeit_kugellabyrinth.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
