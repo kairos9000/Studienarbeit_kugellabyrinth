@@ -17,9 +17,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import java.util.Date;
 import java.util.Locale;
 
 public class ScoreboardActivity extends AppCompatActivity {
@@ -27,11 +25,9 @@ public class ScoreboardActivity extends AppCompatActivity {
     final String TAG = "ScoreboardActivity";
 
     private DatenbankZugriff dbZugriff;
-    private ListView anzeigeListe;
     private SimpleCursorAdapter adapter;
     private Cursor cursor;
     Intent intent;
-    private String name;
     private int seconds;
     private boolean gameEnded;
     SharedPreferences mPreferences;
@@ -54,7 +50,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-        name = mPreferences.getString("name", "");
+        String name = mPreferences.getString("name", "");
         seconds = intent.getIntExtra("time", 0);
         gameEnded = intent.getBooleanExtra("gameEnded", false);
         maze = new char[50][50];
@@ -91,7 +87,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         cursor       = dbZugriff.erzeugeListViewCursor();
 
-        anzeigeListe = (ListView) this.findViewById(R.id.listView1);
+        ListView anzeigeListe = (ListView) this.findViewById(R.id.listView1);
 
         String[] anzeigeSpalten = new String[]{ "_id", "Name", "Zeit"}; //
         int[] anzeigeViews      = new int[]{ R.id.textViewID, R.id.textViewName, R.id.textViewZeit};
@@ -105,8 +101,6 @@ public class ScoreboardActivity extends AppCompatActivity {
 
                     if(columnIndex == 0){
                         long id = cursor.getLong(columnIndex);
-
-                        Log.d(TAG, String.valueOf(id));
 
                         int angepassterRank = rank + 1/* - (2 * anzahlDatensaetze) + 1*/;
 
@@ -205,9 +199,8 @@ public class ScoreboardActivity extends AppCompatActivity {
             intent.putExtras(mBundle);
             intent.putExtra("ballPos", ballPos);
             intent.putExtra("time", seconds);
-            finish();
             startActivity(intent);
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+            finish();
 
         }
 

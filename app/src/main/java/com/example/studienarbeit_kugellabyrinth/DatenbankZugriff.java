@@ -55,7 +55,7 @@ public class DatenbankZugriff extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + tabelle);
-        //onCreate(db);
+        onCreate(db);
     }
 
 

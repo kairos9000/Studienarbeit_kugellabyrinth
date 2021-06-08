@@ -44,25 +44,19 @@ public class MainActivity extends AppCompatActivity {
 
     final String TAG = "MainActivity";
 
-    MazeZeichnen mazeZeichnen;
     KugelZeichnen kugelZeichnen;
     SensorManager mSensorManager;
     TiltEventListener mSensorListener;
-    MazeGenerator mazeGenerator;
     int[] ballPos;
     char[][] maze;
-    boolean scoreBoardStarted = false;
     MediaPlayer mp;
     Intent intent;
-    long soundID;
     int time;
     Stopwatch stopwatch;
     TextView stopwatchView;
     SharedPreferences mPreferences;
-    private static String sub_topic;      // ggf. Anpassen
-    private static final String pub_topic = "sensehat/message"; // ggf. Anpassen
-    private final int qos = 0; // MQTT quality of service
-    private final MemoryPersistence persistence = new MemoryPersistence();
+    private static String sub_topic;
+    private static final String pub_topic = "sensehat/message";
     private MqttClient client;
     boolean connected = false;
 
@@ -72,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setTitle("Labyrinth");
 
         maze = new char[50][50];
         ballPos = new int[2];
@@ -99,19 +97,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             time = intent.getIntExtra("time", 0);
-        }
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
-        getSupportActionBar().setTitle("Labyrinth");
-
-        mazeZeichnen = (MazeZeichnen) findViewById(R.id.mazeZeichnen);
-        kugelZeichnen = (KugelZeichnen) findViewById(R.id.kugelZeichnen);
-
-        if(maze[0][0] == '\u0000'){
-
-            mazeGenerator = new MazeGenerator(23, 23);
+        } else {
+            MazeGenerator mazeGenerator = new MazeGenerator(23, 23);
 
             byte[][] generatedMaze = mazeGenerator.generate();
 
@@ -132,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
+        MazeZeichnen mazeZeichnen = (MazeZeichnen) findViewById(R.id.mazeZeichnen);
+        kugelZeichnen = (KugelZeichnen) findViewById(R.id.kugelZeichnen);
+
         if(mPreferences.getString("sensorType", "").equals("handy")){
             mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
             mSensorListener = new TiltEventListener() {
@@ -149,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
         mazeZeichnen.invalidate();
 
-        soundID = mPreferences.getLong("soundID", 0);
+        long soundID = mPreferences.getLong("soundID", 0);
 
         if(soundID != 0){
             mp = MediaPlayer.create(this, (int) soundID);
@@ -160,25 +151,6 @@ public class MainActivity extends AppCompatActivity {
 
         kugelZeichnen.setBallPos(ballPos);
 
-        kugelZeichnen.invalidate();
-        ballPos = kugelZeichnen.getBallPos();
-        if(maze[ballPos[0]][ballPos[1]] == 'e' && !scoreBoardStarted){
-            scoreBoardStarted = true;
-            if(mp != null){
-                mp.start();
-            }
-
-            Intent scoreboardIntent = new Intent(MainActivity.this, ScoreboardActivity.class);
-            scoreboardIntent.putExtra("gameEnded", true);
-            stopwatch.stop();
-            if(connected){
-                publish(pub_topic, "schwarz rot gelb");
-            }
-            scoreboardIntent.putExtra("time", stopwatch.getSeconds());
-            startActivity(scoreboardIntent);
-            finish();
-
-        }
         stopwatch = new Stopwatch();
         stopwatchView = findViewById(R.id.stopwatch);
 
@@ -192,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         if(kugelZeichnen.updateDirections(x, y)){
             kugelZeichnen.invalidate();
             ballPos = kugelZeichnen.getBallPos();
+            boolean scoreBoardStarted = false;
             if(maze[ballPos[0]][ballPos[1]] == 'e' && !scoreBoardStarted){
                 scoreBoardStarted = true;
                 if(mp != null){
@@ -292,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             broker = "tcp://" + broker + ":1883";
             String clientId = MqttClient.generateClientId();
+            final MemoryPersistence persistence = new MemoryPersistence();
             client = new MqttClient(broker, clientId, persistence);
             MqttConnectOptions connOpts = new MqttConnectOptions();
             connOpts.setCleanSession(true);
@@ -309,7 +283,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public boolean subscribe(String topic) {
         try {
-            client.subscribe(topic, qos, new IMqttMessageListener() {
+            sub_topic = topic;
+            client.subscribe(sub_topic, 0, new IMqttMessageListener() {
                 @Override
                 public void messageArrived(String topic, MqttMessage msg) throws Exception {
                     String message = new String(msg.getPayload());
@@ -317,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
                     moveBall(Float.parseFloat(messageSplitted[0]), Float.parseFloat(messageSplitted[1]));
                 }
             });
-            sub_topic = topic;
+
             return true;
         } catch (MqttException e) {
             return false;

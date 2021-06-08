@@ -21,11 +21,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.IntStream;
-
 public class InGameSettings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     final String TAG = "InGameSettings";
 
@@ -146,7 +141,8 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
         speichern.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(sensorType == "handy") {
+                if(sensorType.equals("handy")) {
+
                     Intent gameIntent = new Intent(InGameSettings.this, MainActivity.class);
                     Bundle mBundle = new Bundle();
                     mBundle.putSerializable("maze", maze);
@@ -163,9 +159,9 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
                     editor.apply();
                     startActivity(gameIntent);
                     finish();
-                } else if(sensorType == "raspi") {
-                    MQTTHandler mqttHandler = new MQTTHandler();
-                    boolean connected = mqttHandler.connect(String.valueOf(newBrokerIP.getText()));
+                } else if(sensorType.equals("raspi")) {
+                    MQTTTester mqttTester = new MQTTTester();
+                    boolean connected = mqttTester.connect(String.valueOf(newBrokerIP.getText()));
                     if (!connected) {
                         Toast.makeText(InGameSettings.this, "Verbindung zum Broker konnte nicht hergestellt werden",
                                 Toast.LENGTH_SHORT).show();
@@ -174,7 +170,7 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
                     }
 
                     if (connected) {
-                        mqttHandler.disconnect();
+                        mqttTester.disconnect();
                         Intent gameIntent = new Intent(InGameSettings.this, MainActivity.class);
                         Bundle mBundle = new Bundle();
                         mBundle.putSerializable("maze", maze);
@@ -258,10 +254,8 @@ public class InGameSettings extends AppCompatActivity implements AdapterView.OnI
             intent.putExtras(mBundle);
             intent.putExtra("ballPos", ballPos);
             intent.putExtra("time", time);
-            finish();
             startActivity(intent);
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
-
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

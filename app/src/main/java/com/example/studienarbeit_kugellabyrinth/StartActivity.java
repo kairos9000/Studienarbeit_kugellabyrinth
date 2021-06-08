@@ -104,8 +104,8 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
                     startActivity(gameIntent);
                     finish();
                 } else if(sensorType == "raspi"){
-                    MQTTHandler mqttHandler = new MQTTHandler();
-                    boolean connected = mqttHandler.connect(String.valueOf(brokerIP.getText()));
+                    MQTTTester mqttTester = new MQTTTester();
+                    boolean connected = mqttTester.connect(String.valueOf(brokerIP.getText()));
                     if(!connected){
                         Toast.makeText(StartActivity.this, "Verbindung zum Broker konnte nicht hergestellt werden",
                                 Toast.LENGTH_SHORT).show();
@@ -114,7 +114,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
                     }
 
                     if(connected){
-                        mqttHandler.disconnect();
+                        mqttTester.disconnect();
                         Intent gameIntent = new Intent(StartActivity.this, MainActivity.class);
                         editor.putString("name", String.valueOf(name.getText()));
                         editor.putString("sensorType", sensorType);

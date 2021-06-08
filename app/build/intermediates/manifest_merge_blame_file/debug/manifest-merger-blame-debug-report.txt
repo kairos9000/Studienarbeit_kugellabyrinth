@@ -10,92 +10,109 @@
 9        android:targetSdkVersion="30" />
 9-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml
 10
-11    <application
-11-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:5:5-50:19
-12        android:allowBackup="true"
-12-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:6:9-35
-13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.5.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\1602505273d43f41d2f450ba7fa6ad4f\core-1.5.0\AndroidManifest.xml:24:18-86
-14        android:debuggable="true"
-15        android:icon="@mipmap/ic_launcher"
-15-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:7:9-43
-16        android:label="@string/app_name"
-16-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:8:9-41
-17        android:roundIcon="@mipmap/ic_launcher_round"
-17-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:9:9-54
-18        android:supportsRtl="true"
-18-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:10:9-35
-19        android:testOnly="true"
-20        android:theme="@style/Theme.Studienarbeit_kugellabyrinth" >
-20-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:11:9-66
-21        <activity
-21-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:12:9-23:20
-22            android:name="com.example.studienarbeit_kugellabyrinth.StartActivity"
-22-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:14:13-42
-23            android:label="@string/app_name"
-23-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:16:13-45
-24            android:noHistory="false"
-24-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:13:13-38
-25            android:screenOrientation="portrait"
-25-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:15:13-49
-26            android:theme="@style/Theme.Studienarbeit_kugellabyrinth.NoActionBar" >
-26-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:17:13-82
-27            <intent-filter>
-27-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:18:13-22:29
-28                <action android:name="android.intent.action.MAIN" />
-28-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:19:17-69
-28-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:19:25-66
-29
-30                <category android:name="android.intent.category.LAUNCHER" />
-30-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:21:17-77
-30-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:21:27-74
-31            </intent-filter>
-32        </activity>
-33        <activity
-33-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:24:9-31:20
-34            android:name="com.example.studienarbeit_kugellabyrinth.MainActivity"
-34-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:25:13-41
-35            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.StartActivity"
-35-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:27:13-56
-36            android:screenOrientation="portrait" >
-36-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:26:13-49
-37            <meta-data
-37-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:28:13-30:50
-38                android:name="android.support.PARENT_ACTIVITY"
-38-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:29:17-63
-39                android:value=".StartActivity" />
-39-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:30:17-47
-40        </activity>
-41        <activity
-41-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:32:9-39:20
-42            android:name="com.example.studienarbeit_kugellabyrinth.ScoreboardActivity"
-42-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:33:13-47
-43            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.MainActivity"
-43-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:35:13-55
-44            android:screenOrientation="portrait" >
-44-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:34:13-49
-45            <meta-data
-45-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:28:13-30:50
-46                android:name="android.support.PARENT_ACTIVITY"
-46-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:29:17-63
-47                android:value=".MainActivity" />
-47-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:30:17-47
-48        </activity>
-49        <activity
-49-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:41:9-48:20
-50            android:name="com.example.studienarbeit_kugellabyrinth.InGameSettings"
-50-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:42:13-43
-51            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.MainActivity"
-51-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:44:13-55
-52            android:screenOrientation="portrait" >
-52-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:43:13-49
-53            <meta-data
-53-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:28:13-30:50
-54                android:name="android.support.PARENT_ACTIVITY"
-54-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:29:17-63
-55                android:value=".MainActivity" />
-55-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:30:17-47
-56        </activity>
-57    </application>
-58
-59</manifest>
+11    <uses-permission android:name="android.permission.WAKE_LOCK" />
+11-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:5:5-68
+11-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:5:22-65
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:6:5-67
+12-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:7:5-79
+13-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:7:22-76
+14    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+14-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:8:5-75
+14-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:8:22-72
+15
+16    <application
+16-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:10:5-57:19
+17        android:allowBackup="true"
+17-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:11:9-35
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.5.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\1602505273d43f41d2f450ba7fa6ad4f\core-1.5.0\AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:12:9-43
+21        android:label="@string/app_name"
+21-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:13:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:14:9-54
+23        android:supportsRtl="true"
+23-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:15:9-35
+24        android:testOnly="true"
+25        android:theme="@style/Theme.Studienarbeit_kugellabyrinth" >
+25-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:16:9-66
+26        <activity
+26-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:19:9-30:20
+27            android:name="com.example.studienarbeit_kugellabyrinth.StartActivity"
+27-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:21:13-42
+28            android:label="@string/app_name"
+28-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:23:13-45
+29            android:noHistory="false"
+29-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:20:13-38
+30            android:screenOrientation="portrait"
+30-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:22:13-49
+31            android:theme="@style/Theme.Studienarbeit_kugellabyrinth.NoActionBar" >
+31-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:24:13-82
+32            <intent-filter>
+32-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:25:13-29:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:26:17-69
+33-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:26:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:28:17-77
+35-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:28:27-74
+36            </intent-filter>
+37        </activity>
+38        <activity
+38-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:31:9-38:20
+39            android:name="com.example.studienarbeit_kugellabyrinth.MainActivity"
+39-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:32:13-41
+40            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.StartActivity"
+40-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:34:13-56
+41            android:screenOrientation="portrait" >
+41-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:33:13-49
+42            <meta-data
+42-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:35:13-37:50
+43                android:name="android.support.PARENT_ACTIVITY"
+43-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:36:17-63
+44                android:value=".StartActivity" />
+44-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:37:17-47
+45        </activity>
+46        <activity
+46-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:39:9-46:20
+47            android:name="com.example.studienarbeit_kugellabyrinth.ScoreboardActivity"
+47-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:40:13-47
+48            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.MainActivity"
+48-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:42:13-55
+49            android:screenOrientation="portrait" >
+49-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:41:13-49
+50            <meta-data
+50-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:35:13-37:50
+51                android:name="android.support.PARENT_ACTIVITY"
+51-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:36:17-63
+52                android:value=".MainActivity" />
+52-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:37:17-47
+53        </activity>
+54        <activity
+54-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:48:9-55:20
+55            android:name="com.example.studienarbeit_kugellabyrinth.InGameSettings"
+55-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:49:13-43
+56            android:parentActivityName="com.example.studienarbeit_kugellabyrinth.MainActivity"
+56-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:51:13-55
+57            android:screenOrientation="portrait" >
+57-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:50:13-49
+58            <meta-data
+58-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:35:13-37:50
+59                android:name="android.support.PARENT_ACTIVITY"
+59-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:36:17-63
+60                android:value=".MainActivity" />
+60-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:37:17-47
+61        </activity>
+62
+63        <service android:name="org.eclipse.paho.android.service.MqttService" />
+63-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:56:9-79
+63-->C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:56:18-77
+64    </application>
+65
+66</manifest>

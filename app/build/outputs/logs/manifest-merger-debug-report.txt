@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
 MERGED from [androidx.navigation:navigation-ui:2.2.2] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\225fcf3e8a055ca0f23e80da8feb9bb4\navigation-ui-2.2.2\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\723282c7994550298e26d567cb0e519b\material-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\9570f34841c72a34d773388f89286f55\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
@@ -43,25 +43,41 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Philip\.gradle\c
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\7b69e6173655717e69f5c7f6f1302d3b\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\8fe2a3deec1ef3dd659aa5f55d73edd7\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\adf8d4ec58c98f5b37616cb4b06b74f4\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
 	package
 		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:3:5-55
 		INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
 		INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-52:12
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:1-59:12
 		INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.WAKE_LOCK
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:5:5-68
+	android:name
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:5:22-65
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:8:5-75
+	android:name
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:8:22-72
 application
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:5:5-50:19
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:10:5-57:19
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\723282c7994550298e26d567cb0e519b\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\723282c7994550298e26d567cb0e519b\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\9570f34841c72a34d773388f89286f55\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
@@ -73,69 +89,73 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Ph
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.5.0] C:\Users\Philip\.gradle\caches\transforms-2\files-2.1\1602505273d43f41d2f450ba7fa6ad4f\core-1.5.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:13:9-41
 	android:roundIcon
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:9:9-54
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:7:9-43
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:12:9-43
 	android:allowBackup
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:11:9-66
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:16:9-66
 activity#com.example.studienarbeit_kugellabyrinth.StartActivity
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:12:9-23:20
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:19:9-30:20
 	android:screenOrientation
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:15:13-49
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:22:13-49
 	android:label
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:16:13-45
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:23:13-45
 	android:noHistory
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:13:13-38
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:20:13-38
 	android:theme
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:17:13-82
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:24:13-82
 	android:name
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:14:13-42
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:21:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:18:13-22:29
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:19:17-69
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:19:25-66
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:21:17-77
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:28:17-77
 	android:name
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:21:27-74
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:28:27-74
 activity#com.example.studienarbeit_kugellabyrinth.MainActivity
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:24:9-31:20
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:31:9-38:20
 	android:screenOrientation
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:26:13-49
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:33:13-49
 	android:parentActivityName
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:27:13-56
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:34:13-56
 	android:name
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:25:13-41
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:32:13-41
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:28:13-30:50
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:35:13-37:50
 	android:value
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:30:17-47
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:37:17-47
 	android:name
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:29:17-63
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:36:17-63
 activity#com.example.studienarbeit_kugellabyrinth.ScoreboardActivity
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:32:9-39:20
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:39:9-46:20
 	android:screenOrientation
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:34:13-49
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:41:13-49
 	android:parentActivityName
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:35:13-55
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:42:13-55
 	android:name
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:33:13-47
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:40:13-47
 activity#com.example.studienarbeit_kugellabyrinth.InGameSettings
-ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:41:9-48:20
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:48:9-55:20
 	android:screenOrientation
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:43:13-49
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:50:13-49
 	android:parentActivityName
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:44:13-55
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:51:13-55
 	android:name
-		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:42:13-43
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:49:13-43
+service#org.eclipse.paho.android.service.MqttService
+ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:56:9-79
+	android:name
+		ADDED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml:56:18-77
 uses-sdk
 INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Philip\AndroidStudioProjects\Studienarbeit_kugellabyrinth\app\src\main\AndroidManifest.xml
