@@ -7,14 +7,22 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+/** Tests if a MQTT connection can be established by connecting and disconnecting in
+ * SettingsActivity
+ * @author Philip Bartmann
+ * @version 1.0
+ * @since 1.0
+ */
 public class MQTTTester {
 
     final String TAG = "MQTTTester";
 
+    /** MqttClient to test connection
+     */
     private MqttClient client;
 
     /**
-     * Connect to broker and
+     * Connect to broker given by the user
      * @param broker Broker to connect to
      */
     public boolean connect (String broker) {
@@ -37,8 +45,7 @@ public class MQTTTester {
 
 
     /**
-     * Unsubscribe from default topic (please unsubscribe from further
-     * topics prior to calling this function)
+     * end test connection to MQTT Broker
      */
     public void disconnect() {
         try {

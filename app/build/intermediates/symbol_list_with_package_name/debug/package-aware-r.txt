@@ -1711,7 +1711,6 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable selector_fieldset_background
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -1785,6 +1784,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id again
 id alertTitle
 id aligned
 id all
@@ -1798,6 +1798,8 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id background
+id ballDraw
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -1839,6 +1841,7 @@ id counterclockwise
 id custom
 id customPanel
 id cut
+id databaseList
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -1916,7 +1919,6 @@ id italic
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
-id kugelZeichnen
 id labelGroup
 id labeled
 id largeLabel
@@ -1926,10 +1928,8 @@ id leftToRight
 id line1
 id line3
 id linear
-id linearLayout1
-id linearLayout3
 id listMode
-id listView1
+id listViewLayout
 id list_item
 id masked
 id material_clock_display
@@ -1951,7 +1951,8 @@ id material_timepicker_mode_button
 id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
-id mazeZeichnen
+id mazeDraw
+id mazeLayout
 id message
 id middle
 id mini
@@ -1993,7 +1994,6 @@ id nav_host_fragment_container
 id navigation_header_container
 id never
 id noScroll
-id nochmal
 id none
 id normal
 id notification_background
@@ -2006,6 +2006,7 @@ id outward
 id packed
 id parallax
 id parent
+id parentLayout
 id parentPanel
 id parentRelative
 id parent_matrix
@@ -2020,7 +2021,6 @@ id postLayout
 id progress_circular
 id progress_horizontal
 id radio
-id radioGroup1
 id raspi
 id ratio
 id rectangles
@@ -2055,6 +2055,8 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id sensorGroup
+id sensors
 id shortcut
 id showCustom
 id showHome
@@ -2067,9 +2069,10 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id sound
+id soundList
 id spacer
 id special_effects_controller_view_tag
-id spinner2
 id spline
 id split_action_bar
 id spread
@@ -2115,11 +2118,9 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textView
-id textView2
 id textViewID
 id textViewName
-id textViewZeit
+id textViewTime
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2162,7 +2163,6 @@ id withText
 id withinBounds
 id wrap
 id wrap_content
-id zeichnen
 id zero_corner_chip
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
@@ -2314,6 +2314,7 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu menu_main
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 navigation nav_graph
 plurals mtrl_badge_content_description

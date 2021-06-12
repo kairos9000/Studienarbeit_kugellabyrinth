@@ -1,9 +1,10 @@
-// Maze generator in Java
-// Joe Wingbermuehle
-// 2015-07-27
-
 package com.example.studienarbeit_kugellabyrinth;
 
+/** Maze generator in Java. Published on 2015-07-27
+ * @author Joe Wingbermuehle
+ * @version 1.0
+ * @since 1.0
+ */
 public class MazeGenerator {
 
     private static final int WALL = 0;
@@ -17,6 +18,10 @@ public class MazeGenerator {
     private int height;
     private java.util.Random rand = new java.util.Random();
 
+    /** Constructs a MazeGenerator
+     * @param width the width of the maze specified in the number of chars
+     * @param height the height of the maze specified in the number of chars
+     */
     public MazeGenerator(int width, int height) {
         this.width = width;
         this.height = height;
@@ -24,6 +29,11 @@ public class MazeGenerator {
         newData = new byte[width-2][height-2];
     }
 
+    /** carves the corridors of the maze in the array according to a maze
+     * generator algorithm
+     * @param x x position of the starting point => always 2
+     * @param y y position of the starting point => always 2
+     */
     private void carve(int x, int y) {
 
         final int[] upx = { 1, -1, 0, 0 };
@@ -47,13 +57,19 @@ public class MazeGenerator {
         }
     }
 
+    /** generates a maze with the given width and height
+     */
     public byte[][] generate() {
+        // initializes whole array as walls
         for(int x = 0; x < width; x++) {
             data[x] = new byte[height];
             for(int y = 0; y < height; y++) {
                 data[x][y] = WALL;
             }
         }
+
+        // surround whole maze with space to avoid accidentally
+        // going out of the array
         for(int x = 0; x < width; x++) {
             data[x][0] = SPACE;
             data[x][height - 1] = SPACE;
@@ -63,14 +79,16 @@ public class MazeGenerator {
             data[width - 1][y] = SPACE;
         }
 
+        // sets starting point and carves corridors in the maze
         data[2][2] = SPACE;
         carve(2, 2);
 
+        // sets starting and end point
         data[2][1] = START;
         data[width - 3][height - 2] = END;
 
 
-
+        // deletes surrounding walls
         for(int i = 1; i < data.length - 1; i++){
             for(int j = 1; j < data[0].length - 1; j++){
                 newData[i-1][j-1] = data[i][j];

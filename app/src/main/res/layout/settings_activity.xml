@@ -8,12 +8,12 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/mazeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.example.studienarbeit_kugellabyrinth.MazeZeichnen
-            android:id="@+id/zeichnen"
+        <com.example.studienarbeit_kugellabyrinth.MazeDrawer
+            android:id="@+id/background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#333333" />
@@ -71,7 +71,7 @@
         android:maxLength="20"/>
 
     <RadioGroup
-        android:id="@+id/radioGroup1"
+        android:id="@+id/sensorGroup"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -83,7 +83,7 @@
         android:checkedButton="@+id/handy">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/sensors"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -149,7 +149,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/sound"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -164,7 +164,7 @@
         app:layout_constraintVertical_bias="0.732" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/soundList"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_centerInParent="true"

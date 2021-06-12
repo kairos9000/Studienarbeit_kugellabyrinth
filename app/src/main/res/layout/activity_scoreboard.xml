@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -27,7 +27,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/listViewLayout"
         android:layout_width="match_parent"
         android:layout_height="443dp"
         android:layout_marginTop="20dp"
@@ -35,7 +35,7 @@
         android:orientation="vertical">
 
         <ListView
-            android:id="@+id/listView1"
+            android:id="@+id/databaseList"
             android:layout_width="match_parent"
             android:layout_height="453dp">
 
@@ -49,7 +49,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/nochmal"
+            android:id="@+id/again"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="20dp"

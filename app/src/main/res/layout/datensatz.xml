@@ -20,7 +20,7 @@
         android:text="@string/datensatzTemplate" />
 
     <TextView
-        android:id="@+id/textViewZeit"
+        android:id="@+id/textViewTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"

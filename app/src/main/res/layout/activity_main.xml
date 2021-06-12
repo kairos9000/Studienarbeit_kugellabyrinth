@@ -12,14 +12,14 @@
         android:layout_height="match_parent">
 
 
-        <com.example.studienarbeit_kugellabyrinth.MazeZeichnen
-            android:id="@+id/mazeZeichnen"
+        <com.example.studienarbeit_kugellabyrinth.MazeDrawer
+            android:id="@+id/mazeDraw"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#333333" />
 
-        <com.example.studienarbeit_kugellabyrinth.KugelZeichnen
-            android:id="@+id/kugelZeichnen"
+        <com.example.studienarbeit_kugellabyrinth.BallDrawer
+            android:id="@+id/ballDraw"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

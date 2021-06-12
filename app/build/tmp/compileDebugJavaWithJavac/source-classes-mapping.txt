@@ -1,3 +1,20 @@
+com/example/studienarbeit_kugellabyrinth/MazeDrawer.java
+ com.example.studienarbeit_kugellabyrinth.MazeDrawer
+com/example/studienarbeit_kugellabyrinth/DatabaseTransformations.java
+ com.example.studienarbeit_kugellabyrinth.DatabaseTransformations
+com/example/studienarbeit_kugellabyrinth/DatabaseTemplate.java
+ com.example.studienarbeit_kugellabyrinth.DatabaseTemplate
+com/example/studienarbeit_kugellabyrinth/BuildConfig.java
+ com.example.studienarbeit_kugellabyrinth.BuildConfig
+com/example/studienarbeit_kugellabyrinth/MQTTTester.java
+ com.example.studienarbeit_kugellabyrinth.MQTTTester
+com/example/studienarbeit_kugellabyrinth/MazeGenerator.java
+ com.example.studienarbeit_kugellabyrinth.MazeGenerator
+com/example/studienarbeit_kugellabyrinth/BallDrawer.java
+ com.example.studienarbeit_kugellabyrinth.BallDrawer
+com/example/studienarbeit_kugellabyrinth/Stopwatch.java
+ com.example.studienarbeit_kugellabyrinth.Stopwatch
+ com.example.studienarbeit_kugellabyrinth.Stopwatch$1
 com/example/studienarbeit_kugellabyrinth/MainActivity.java
  com.example.studienarbeit_kugellabyrinth.MainActivity
  com.example.studienarbeit_kugellabyrinth.MainActivity$1
@@ -6,28 +23,11 @@ com/example/studienarbeit_kugellabyrinth/ScoreboardActivity.java
  com.example.studienarbeit_kugellabyrinth.ScoreboardActivity
  com.example.studienarbeit_kugellabyrinth.ScoreboardActivity$1
  com.example.studienarbeit_kugellabyrinth.ScoreboardActivity$2
-com/example/studienarbeit_kugellabyrinth/DatenbankZugriff.java
- com.example.studienarbeit_kugellabyrinth.DatenbankZugriff
-com/example/studienarbeit_kugellabyrinth/KugelZeichnen.java
- com.example.studienarbeit_kugellabyrinth.KugelZeichnen
 com/example/studienarbeit_kugellabyrinth/SettingsActivity.java
  com.example.studienarbeit_kugellabyrinth.SettingsActivity
  com.example.studienarbeit_kugellabyrinth.SettingsActivity$1
  com.example.studienarbeit_kugellabyrinth.SettingsActivity$2
  com.example.studienarbeit_kugellabyrinth.SettingsActivity$3
  com.example.studienarbeit_kugellabyrinth.SettingsActivity$4
-com/example/studienarbeit_kugellabyrinth/DatenbankTemplate.java
- com.example.studienarbeit_kugellabyrinth.DatenbankTemplate
-com/example/studienarbeit_kugellabyrinth/MazeGenerator.java
- com.example.studienarbeit_kugellabyrinth.MazeGenerator
-com/example/studienarbeit_kugellabyrinth/MazeZeichnen.java
- com.example.studienarbeit_kugellabyrinth.MazeZeichnen
 com/example/studienarbeit_kugellabyrinth/TiltEventListener.java
  com.example.studienarbeit_kugellabyrinth.TiltEventListener
-com/example/studienarbeit_kugellabyrinth/Stopwatch.java
- com.example.studienarbeit_kugellabyrinth.Stopwatch
- com.example.studienarbeit_kugellabyrinth.Stopwatch$1
-com/example/studienarbeit_kugellabyrinth/MQTTTester.java
- com.example.studienarbeit_kugellabyrinth.MQTTTester
-com/example/studienarbeit_kugellabyrinth/BuildConfig.java
- com.example.studienarbeit_kugellabyrinth.BuildConfig

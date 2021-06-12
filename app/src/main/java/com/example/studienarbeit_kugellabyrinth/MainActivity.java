@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -24,46 +25,97 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+/** MainActivity for delegating the game logic and getting and sending the data
+ * @author Philip Bartmann
+ * @version 1.0
+ * @since 1.0
+ */
 public class MainActivity extends AppCompatActivity {
 
     final String TAG = "MainActivity";
 
-    KugelZeichnen kugelZeichnen;
+    /** Instance of BallDrawer class to draw and update the ball in the maze
+     */
+    BallDrawer ballDrawer;
+    /** Instance of SensorManager to initialize the sensors for listening
+     */
     SensorManager mSensorManager;
+    /** Instance of TiltEventListener, to listen to changes in the accelerometer sensors
+     */
     TiltEventListener mSensorListener;
+    /** Position of the ball as indizes in the maze array
+     */
     int[] ballPos;
+    /** array of chars to save the maze
+     */
     char[][] maze;
+    /** Instance of MediaPlayer to play sounds at the end of the game
+     */
     MediaPlayer mp;
+    /** Instance of Intent to start a new intent from this Activity
+     */
     Intent intent;
+    /** the time needed to complete the game in seconds is saved in this variable
+     */
     int time;
+    /** Instance of the Stopwatch class to start and stop the time during the game
+     */
     Stopwatch stopwatch;
+    /** TextView element to show the time during the game
+     */
     TextView stopwatchView;
+    /** Instance of SharedPreferences to get the variables set in SettingsActivity
+     */
     SharedPreferences mPreferences;
+    /** topic to subscribe to in MQTT Connection as a string
+     */
     private static String sub_topic;
+    /** topic to publish to in MQTT Connection as a string,
+     * this topic is hardcoded so it can't be changed from the user
+     */
     private static final String pub_topic = "sensehat/message";
+    /** Instance of MqttClient to connect to a MQTT Broker
+     */
     private MqttClient client;
+    /** indicates if the App is connected to a MQTT Broker or not
+     */
     boolean connected = false;
+    /** indicates if the Intent for the Scoreboard is already started
+     * so that the Intent isn't started multiple times
+     */
+    boolean scoreBoardStarted = false;
 
 
-
+    /** This method is called when MainActivity is created.
+     * It handles the generation of the maze, the ball position,
+     * the drawing of the maze, the initialization of the built in
+     * phone sensors and the starting of the timer
+     * @param savedInstanceState saved variables of the Activity was paused, e.g. when the screen is
+     *                           rotated, to get them again and restore the state of the Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        // sets the title of the screen to "Labyrinth"
         getSupportActionBar().setTitle("Labyrinth");
 
         maze = new char[50][50];
         ballPos = new int[2];
 
         intent = getIntent();
+        // sets the Position of the Ball to the start of the maze
+        // the start of the maze is at [1, 0] by default
         ballPos[0] = 1;
         ballPos[1] = 0;
 
+        // get the default SharedPreferences of this App
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        // if the Activity has extras from the calling intent, e.g. when it is called
+        // by SettingsActivity or ScoreboardActivity in game then read the extras and use
+        // them to save the state of the game before
         if(getIntent().getExtras() != null){
             Object[] mazeArr = (Object[]) getIntent().getExtras().getSerializable("maze");
             if (mazeArr != null) {
@@ -75,17 +127,18 @@ public class MainActivity extends AppCompatActivity {
             int[] posArr = (int[]) getIntent().getExtras().getSerializable("ballPos");
             if (posArr != null) {
                 ballPos = new int[posArr.length];
-                for (int i = 0; i < posArr.length; i++) {
-                    ballPos[i] = (int) posArr[i];
-                }
+                System.arraycopy(posArr, 0, ballPos, 0, posArr.length);
             }
 
             time = intent.getIntExtra("time", 0);
         } else {
+            // If there are no extras then it's a new game and the MazeGenerator has
+            // to generate a maze
             MazeGenerator mazeGenerator = new MazeGenerator(23, 23);
 
             byte[][] generatedMaze = mazeGenerator.generate();
 
+            // read the maze and save it in the maze char array
             for(int i = 0; i < generatedMaze.length; i++){
                 for(int j = 0; j < generatedMaze[0].length; j++){
                     if(generatedMaze[i][j] == 0){
@@ -103,27 +156,32 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // assign the selfmade view element to mazeDrawer
+        MazeDrawer mazeDrawer = findViewById(R.id.mazeDraw);
+        // assign the selfmade view element to ballDrawer
+        ballDrawer = findViewById(R.id.ballDraw);
 
-        MazeZeichnen mazeZeichnen = (MazeZeichnen) findViewById(R.id.mazeZeichnen);
-        kugelZeichnen = (KugelZeichnen) findViewById(R.id.kugelZeichnen);
-
+        // initialize the sensors if the user wants to use the built in phone sensors
         if(mPreferences.getString("sensorType", "").equals("handy")){
             mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+            // abstract method from TiltEventListener is defined here
             mSensorListener = new TiltEventListener() {
                 @Override
                 public void onTilt(float x, float y) {
                     MainActivity.this.moveBall(x, y);
                 }
             };
-            mSensorListener.setGravitationalConstant(SensorManager.GRAVITY_EARTH);
         }
 
+        // give mazeDrawer and ballDrawer the maze to work with
+        mazeDrawer.getMaze(maze);
+        ballDrawer.getMaze(maze);
 
-        mazeZeichnen.getMaze(maze);
-        kugelZeichnen.getMaze(maze);
+        // draw the maze
+        mazeDrawer.invalidate();
 
-        mazeZeichnen.invalidate();
-
+        // assign the sound, which will be played at the end according to the
+        // one the user chose
         long soundID = mPreferences.getLong("soundID", 0);
 
         if(soundID != 0){
@@ -133,8 +191,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        kugelZeichnen.setBallPos(ballPos);
+        // set the ball either to the start or to the last saved position
+        ballDrawer.setBallPos(ballPos);
 
+        // assign and start the stopwatch
         stopwatch = new Stopwatch();
         stopwatchView = findViewById(R.id.stopwatch);
 
@@ -144,22 +204,35 @@ public class MainActivity extends AppCompatActivity {
         stopwatch.runTimer(stopwatchView);
     }
 
+    /** this method is called everytime a new sensor value arrives either from the phone
+     * or with MQTT from the raspberry
+     * @param x the tilt in x direction of either the phone or the raspberry
+     * @param y the tilt in y direction of either the phone or the raspberry
+     */
     private void moveBall(float x, float y) {
-        if(kugelZeichnen.updateDirections(x, y)){
-            kugelZeichnen.invalidate();
-            ballPos = kugelZeichnen.getBallPos();
-            boolean scoreBoardStarted = false;
+        // if the value is greater than 1 or less than -1
+        // the position of the ball is updated and newly drawn
+        if(ballDrawer.updateDirections(x, y)){
+            ballDrawer.invalidate();
+            // get the Postition of the ball to check if the end is reached
+            ballPos = ballDrawer.getBallPos();
             if(maze[ballPos[0]][ballPos[1]] == 'e' && !scoreBoardStarted){
+                // set scoreBoardStarted to true to prevent the method to start multiple intents
+                // if the method is called multiple times because more sensor data has arrived
                 scoreBoardStarted = true;
+                // play the ending sound
                 if(mp != null){
                     mp.start();
                 }
+                // start a intent to show the scoreboard with the new dataset of the current player
                 Intent scoreboardIntent = new Intent(MainActivity.this, ScoreboardActivity.class);
                 scoreboardIntent.putExtra("gameEnded", true);
                 stopwatch.stop();
                 scoreboardIntent.putExtra("time", stopwatch.getSeconds());
+                // publish a message to the raspberry if it is connected
+                // to display a end picture on the SenseHAT
                 if(connected){
-                    publish(pub_topic, "schwarz rot gelb");
+                    publish(pub_topic, "cheer");
                 }
                 startActivity(scoreboardIntent);
                 finish();
@@ -168,6 +241,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /** called when MainActivity gets paused.
+     * disconnects the MQTT connection to the raspberry if it is
+     * connected or ends the listening to the sensor values of the phone
+     */
     @Override
     protected void onPause() {
         if(mPreferences.getString("sensorType", "").equals("raspi")){
@@ -180,6 +257,12 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    /** called when MainActivity gets started again after it was paused or
+     * if it is created => gets called after onCreate is finished.
+     * connects to the raspberry and subscribes to the topic given by the user
+     * or starts listening to the sensor values of the phone with a period of
+     * 0.18 seconds
+     */
     @Override
     protected void onResume(){
         super.onResume();
@@ -187,28 +270,34 @@ public class MainActivity extends AppCompatActivity {
 
             connected = connect(mPreferences.getString("brokerIP", ""));
             subscribe(mPreferences.getString("topic", ""));
+            Toast.makeText(MainActivity.this, "Verbunden mit Broker " +
+                    mPreferences.getString("brokerIP", "") + ". Das Topic " +
+                    mPreferences.getString("topic", "") + " wurde abonniert.",
+                    Toast.LENGTH_SHORT).show();
         } else{
             mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-                    SensorManager.SENSOR_DELAY_NORMAL);
+                    180000);
         }
 
     }
 
+    /** Inflate the menu; this adds items to the action bar if it is present.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    /** Handles action bar item clicks
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // differentiates the items, which can be pressed first two are the top menu
+        // in the upper right corner, last one is the back button on the upper left corner
         if (id == R.id.action_settings) {
             Intent inGameSettingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
             Bundle mBundle = new Bundle();
@@ -231,11 +320,18 @@ public class MainActivity extends AppCompatActivity {
             inGameScoreboardIntent.putExtra("gameEnded", false);
             startActivity(inGameScoreboardIntent);
             finish();
+        } else if (id == android.R.id.home){
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    /** Overrides the back button on the phone in the bar at the bottom
+     * so that no unexpected behavior happens
+     */
     @Override
     public void onBackPressed(){
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -244,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Connect to broker and
+     * Connect to the given broker
      * @param broker Broker to connect to
      */
     public boolean connect (String broker) {
@@ -264,10 +360,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Subscribes to a given topic
+     * Subscribes to a given topic and defines in the overwritten method what should happen
+     * with messages, which arrive over MQTT
      * @param topic Topic to subscribe to
      */
-    public boolean subscribe(String topic) {
+    public void subscribe(String topic) {
         try {
             sub_topic = topic;
             client.subscribe(sub_topic, 0, new IMqttMessageListener() {
@@ -278,18 +375,16 @@ public class MainActivity extends AppCompatActivity {
                     moveBall(Float.parseFloat(messageSplitted[0]), Float.parseFloat(messageSplitted[1]));
                 }
             });
-
-            return true;
         } catch (MqttException e) {
-            return false;
+            Toast.makeText(MainActivity.this, "Topic kann nicht abonniert werden", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     /**
-     * Publishes a message via MQTT (with fixed topic)
-     * @param topic topic to publish with
-     * @param msg message to publish with publish topic
+     * Publishes a message via MQTT
+     * @param topic topic to publish to (hardcoded here)
+     * @param msg message to publish to publish topic
      */
     public void publish(String topic, String msg) {
         MqttMessage message = new MqttMessage(msg.getBytes());
@@ -301,8 +396,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Unsubscribe from default topic (please unsubscribe from further
-     * topics prior to calling this function)
+     * Unsubscribe from previously subscribed topic and
+     * end connection to MQTT Broker
      */
     public void disconnect() {
         try {

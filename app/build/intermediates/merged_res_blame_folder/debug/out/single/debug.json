@@ -24,16 +24,24 @@
         "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_fieldset_background.xml.flat",
-        "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\drawable\\selector_fieldset_background.xml"
-    },
-    {
         "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
@@ -76,6 +84,10 @@
         "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\layout\\activity_scoreboard.xml"
     },
     {
+        "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
@@ -94,6 +106,10 @@
     {
         "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\raw_firecrackers.mp3.flat",
         "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\raw\\firecrackers.mp3"
+    },
+    {
+        "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Philip\\AndroidStudioProjects\\Studienarbeit_kugellabyrinth\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
